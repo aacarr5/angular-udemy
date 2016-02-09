@@ -1,26 +1,44 @@
 <!DOCTYPE html >
-<html lang="en" ng-app >
+<html lang="en" ng-app="minmax" >
+<!-- Above line tells Angular there's an modeul called minmax  that'll controller errthang -->
 <head >
 	<title >Data Binding</title >
-	<link href="../libs/bootstrap/dist/css/bootstrap.min.css"
-	      rel="stylesheet" >
-	<link href="main.css"
-	      rel="stylesheet" >
+	<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
+	<link href="main.css" rel="stylesheet" >
 </head >
 
 <body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand href='/'"> Controllers </a>
+			</div>
+		</div>
+	</nav>
 
-<div class="container" ng-init="title='CodeCraft'; awesome=0">
-	<h1> {{ title }} is Awesome: {{awesome}}</h1>
-	<input type="text"
-				 class="form-control"
-				 ng-model="title"/>
+	<div class="container main-content" ng-controller="MinMaxCtrl">
+		<form>
 
-	<input type="checkbox"
-				 class="form-control"
-				 ng-model="awesome"/>
-</div >
+			<div class="form-group" >
+				<label for="name"> Name </label>
+				<input type="text" class="form-control" id="name">
+			</div>
 
-<script src="../libs/angular/angular.min.js" ></script >
-</body >
+			<div class="form-group" >
+				<label for="email"> Email </label>
+				<input type="text" class="form-control" id="email">
+			</div>
+
+			<div class="form-group" >
+				<label for="password"> Password </label>
+				<input type="password" class="form-control" id="password">
+			</div>
+
+		</form>
+	</div>
+
+
+	<script src="../libs/angular/angular.min.js" ></script >
+	<script src="main.js"></script>
+	</body >
 </html >
