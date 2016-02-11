@@ -4,3 +4,9 @@ body {
 .main-content {
   padding: 40px 15px;
 }
+
+.extraInfo {
+  position: fixed;
+  top: 10%;
+  right: 20px;
+}

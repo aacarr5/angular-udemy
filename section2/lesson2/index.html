@@ -17,49 +17,91 @@
 	</div >
 </nav >
 
-<div class="container main-content" ng-controller="PersonsController">
-
-	<div class="row">
-		<div class="col-md-8">
-			<table class="table table-bordered">
-
-				<tr>
-					<th>#</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Birthday</th>
-				</tr>
-
-				<tr ng-repeat="person in persons"
-				ng-style="{
-					'background-color': $index == selectedIndex ? 'lightgray' : ''
-				}"
-				ng-click="selectPerson(person,$index)">
-					<td>{{ $index }}</td>
-					<td>{{ person.name }}</td>
-					<td>{{ person.email }}</td>
-					<td>{{ person.birthdate | date:"longDate" }}</td>
-				</tr>
+<div class="userContent">
 
 
-			</table>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading"> Details </div>
-				<div class="panel-body">
-					<dl>
-						<dt> country</dt>
-						<dd> {{selectedPerson.country}}</dd>
-						<dt> City</dt>
-						<dd> {{selectedPerson.city}}</dd>
-						<dt> Address</dt>
-						<dd> {{selectedPerson.address}}</dd>
-					</dl>
-				</div>
+
+	<div class="container main-content" ng-controller="PersonsController">
+
+		<div class="row" >
+			<div class="col-md-12" >
+				<form class="form-inline well well-sm" >
+					<span class="glyphicon glyphicon-search" ></span >
+
+					<div class="form-group" >
+							<input type="text"
+										 class="form-control"
+										 id="name"
+										 ng-model="search.$"
+										 placeholder="Search name..."
+									/>
+					</div >
+
+					<span class="glyphicon glyphicon-sort-by-attributes"></span>
+					<div class="form-group">
+						<select class="form-control"
+							ng-model="order">
+							<option value="name"> Name (ASC) </option>
+							<option value="-name"> Name (DSC) </option>
+							<option value="email"> Email (ASC) </option>
+							<option value="-email"> Email (DSC) </option>
+						</select>
+					</div>
+				</form >
+			</div >
+		</div >
+
+		<div class="row">
+			<div class="col-md-8">
+				<table class="table table-bordered">
+
+					<tr class="headerInfo">
+						<th>#</th>
+						<th>Name
+							<span ng-click="order = 'name'" class="glyphicon glyphicon-menu-up"></span>
+							<span ng-click="order = '-name'"class="glyphicon glyphicon-menu-down"></span>
+						</th>
+						<th>Email</th>
+						<th>Birthday</th>
+					</tr>
+
+					<tr ng-repeat="person in persons | filter:search | orderBy: order "
+					ng-style="{
+						'background-color': $index == selectedIndex ? 'lightgray' : ''
+					}"
+					ng-click="selectPerson(person,$index)">
+						<td>{{ $index }}</td>
+						<td>{{ person.name }}</td>
+						<td>{{ person.email }}</td>
+						<td>{{ person.birthdate | date:"longDate" }}</td>
+					</tr>
+
+
+				</table>
+			</div>
+			<div class="col-md-4 extraInfo">
+				<div class="panel panel-default">
+					<div class="panel-heading"> Details </div>
+					<div class="panel-body">
+						<dl>
+							<dt> name</dt>
+							<dd> {{selectedPerson.name}}</dd>
+							<dt> email</dt>
+							<dd> {{selectedPerson.email}}</dd>
+							<dt> country</dt>
+							<dd> {{selectedPerson.country}}</dd>
+							<dt> City</dt>
+							<dd> {{selectedPerson.city}}</dd>
+							<dt> Address</dt>
+							<dd> {{selectedPerson.address}}</dd>
+						</dl>
+					</div>
+			</div>
+			<pre>
+				{{search | json}}
+			</pre>
 		</div>
 	</div>
-
 
 
 </div >
