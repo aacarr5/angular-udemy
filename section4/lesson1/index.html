@@ -14,20 +14,27 @@
 
 <div class="container" >
 
+  <div class="root" >
+    <label >
+      <input type="text" ng-model="data.name" />
+    </label >
+    <p>{{data.name}}</p>
+  </div>
+
 	<div class="row" >
 		<div class="col-md-6" >
 			<div class="parent" ng-controller="ParentController" >
 				<label >
-					<input type="text" ng-model="name" />
+					<input type="text" ng-model="data.name" />
 				</label >
-				<p >{{name}}</p >
+				<p >{{data.name}}</p >
 
           <div class="child" ng-controller="ChildController">
             <button class="btn btn-warning" ng-click="reset()">Reset!</button>
             <label >
-              <input type="text" ng-model="name" />
+              <input type="text" ng-model="data.name" />
             </label >
-            <p>{{name}}</p>
+            <p>{{data.name}}</p>
           </div>
 
 			</div >
